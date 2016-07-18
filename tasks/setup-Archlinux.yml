@@ -1,0 +1,8 @@
+---
+- name: Update pacman cache
+  pacman: update_cache=yes
+
+- name: Ensure nginx is installed and up-to-date.
+  pacman:
+    name: "{{ nginx_package_name }}"
+    state: latest
