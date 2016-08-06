@@ -1,7 +1,10 @@
 user  {{ nginx_user }};
 
 error_log  {{ nginx_error_log }};
-pid        {{ nginx_pidfile }};
+{% if ansible_os_family is not equalto 'Archlinux' %}
+{# https://bugs.archlinux.org/task/46500 %}
+    pid        {{ nginx_pidfile }};
+{% endif %}
 
 worker_processes  {{ nginx_worker_processes }};
 
